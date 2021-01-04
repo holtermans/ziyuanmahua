@@ -1,0 +1,53 @@
+<view class="page">
+  <form onSubmit="onSubmit">
+    <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">工单类型</view>
+        <view class="form-row-content">{{orderType}}</view>
+      </view>
+      <view class="form-row">
+        <view class="form-row-label">工单名称</view>
+        <input name="orderName" class="form-row-input" placeholder="填写工单名称" type="text" value="{{orderName}}"></input>
+      </view>
+      <view class="form-row">
+        <view class="form-row-label">工单内容</view>
+        <textarea name="orderContent" class="form-row-textarea" placeholder="填写工单内容" value="{{orderContent}}"></textarea>
+      </view>
+      <view class="form-row">
+        <list>
+          <list-item arrow="{{true}}" onClick="onChooseDate">选择时间</list-item>
+        </list>
+      </view>
+      <view class="form-row">
+        <list>
+          <list-item arrow="{{true}}" onClick="onItemClick">选择审批人</list-item>
+        </list>
+        <view class="row">
+          <view class="row-title">标题位置</view>
+          <view class="row-extra">当前选择：{{titlePositions[titlePosIndex]}}</view>
+          <am-icon type="right" size="18" color="#cccc"/>
+        </view>
+        <view a:for="{{shenpiren}}">
+        {{index+1}}: {{item.name}}
+        </view>
+      </view>
+      <view>
+        <view>
+          附件
+        </view>
+        <image mode="aspectFill" src="https://lterweima.oss-cn-shenzhen.aliyuncs.com/wangwo/shoot.png" onTap="uploadImage" style="width:100rpx;height:100rpx;border:1px solid grey"></image>
+        <image mode="aspectFill" src="{{imgPath}}" onTap="myPreviewImage" style="width:100px;height:100px;"></image>
+      </view>
+    </view>
+    <view class="footer">
+      <view class="footer-row">
+        <view class="footer-row-content">
+          <button type="default">仅保存</button>
+        </view>
+        <view class="footer-row-content">
+          <button type="primary" formType="submit">提交工单</button>
+        </view>
+      </view>
+    </view>
+  </form>
+</view>

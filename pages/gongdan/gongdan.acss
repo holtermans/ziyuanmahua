@@ -1,0 +1,49 @@
+.page {
+  padding-top: 20rpx;
+}
+
+.form-row-label {
+  position: relative;
+  width: 20%;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: black;
+  display: inline-block;
+}
+
+.form-row-content {
+  display: inline-block;
+  float: right;
+  width: 20%;
+  position: relative;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: rgb(122, 122, 122);
+}
+
+.form-row {
+  position: relative;
+  padding: 0 20rpx;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.form-row-input {
+  float: right;
+  width: 70%;
+  height: 70rpx;
+  text-align: right
+}
+
+.form-row-textarea {
+  clear: both;
+}
+.footer{
+  position: fixed;
+  bottom: 0px;
+  width:100%;
+}
+.footer-row-content{
+  width: 50%;
+  display: inline-block;
+}

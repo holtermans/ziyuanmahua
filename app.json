@@ -1,0 +1,10 @@
+{
+  "pages": [
+    "pages/gongdan/gongdan",
+    "pages/index/index"
+    
+  ],
+  "window": {
+    "defaultTitle": "My App"
+  }
+}
