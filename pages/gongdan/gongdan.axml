@@ -14,29 +14,35 @@
         <textarea name="orderContent" class="form-row-textarea" placeholder="填写工单内容" value="{{orderContent}}"></textarea>
       </view>
       <view class="form-row">
-        <list>
-          <list-item arrow="{{true}}" onClick="onChooseDate">选择时间</list-item>
-        </list>
+        <view class="row" color="#cccc" onTap="onChooseDate">
+          <view class="row-title">选择时间</view>
+          <view class="row-extra">
+            <view a:if="{{date}}">
+            {{date}}
+            </view>
+          </view>
+          <am-icon type="right" size="16" />
+        </view>
       </view>
       <view class="form-row">
-        <list>
-          <list-item arrow="{{true}}" onClick="onItemClick">选择审批人</list-item>
-        </list>
-        <view class="row">
-          <view class="row-title">标题位置</view>
-          <view class="row-extra">当前选择：{{titlePositions[titlePosIndex]}}</view>
-          <am-icon type="right" size="18" color="#cccc"/>
-        </view>
-        <view a:for="{{shenpiren}}">
-        {{index+1}}: {{item.name}}
+        <view class="row" color="#cccc" onTap="onItemClick">
+          <view class="row-title">审批人</view>
+          <view class="row-extra">
+            <view a:for="{{shenpiren}}">
+            {{item.name}}
+            </view>
+          </view>
+          <am-icon type="right" size="16" />
         </view>
       </view>
       <view>
         <view>
           附件
         </view>
-        <image mode="aspectFill" src="https://lterweima.oss-cn-shenzhen.aliyuncs.com/wangwo/shoot.png" onTap="uploadImage" style="width:100rpx;height:100rpx;border:1px solid grey"></image>
-        <image mode="aspectFill" src="{{imgPath}}" onTap="myPreviewImage" style="width:100px;height:100px;"></image>
+        <image mode="aspectFill" src="https://lterweima.oss-cn-shenzhen.aliyuncs.com/wangwo/shoot.png" onTap="uploadImage" style="width:100rpx;height:100rpx"></image>
+        <view a:for="{{imgPath}}">
+          <image mode="aspectFill" src="{{item}}" onTap="myPreviewImage" style="width:100px;height:100px;"></image>
+        </view>
       </view>
     </view>
     <view class="footer">
