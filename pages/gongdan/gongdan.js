@@ -79,22 +79,34 @@ Page({
     });
   },
   onSubmit(e) {
+    if (this.data.imgPath.length != 0) {
+      
+      dd.showLoading({
+        content: '上传图片中...',
+      });
+      dd.uploadFile({
+        url: 'http://127.0.0.1:8080/fileUpload',
+        fileType: 'image',
+        fileName: 'file',
+        filePath: this.data.imgPath[0],
+        success: (res) => {
+          if (res.data.statusCode == 200) {
+            
+            dd.alert({
+              content: '上传成功'
+            });
+          }else{
+            dd.hideLoading();
+            dd.alert({
+              content:'上传失败'
+            })
+          }
+
+        },
+      });
+    }
     console.log(`数据：${JSON.stringify(e.detail.value)}` + this.data.date + this.data.shenpiren[0].name);
-    dd.showLoading({
-      content: '上传图片中...',
-    });
-    dd.uploadFile({
-      url: 'http://de92568a.nat1.s100.vip/fileUpload',
-      fileType: 'image',
-      fileName: 'file',
-      filePath: this.data.imgPath[0],
-      success: (res) => {
-        dd.hideLoading();
-        dd.alert({
-          content: '上传成功'
-        });
-      },
-    });
+
   },
   onChooseDate() {
     var that = this;
@@ -107,6 +119,9 @@ Page({
           date: res.date,
         })
       },
+      fail: function () {
+
+      }
     });
   }
 });
