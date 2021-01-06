@@ -1,0 +1,9 @@
+<view onTap="newOrder">
+  <am-list-item thumb="https://lterweima.oss-cn-shenzhen.aliyuncs.com/ltlogo.png" arrow="{{true}}" borderRadius="{{true}}" titlePosition="middle">创建新工单</am-list-item>
+</view>
+<view>
+  <am-list-item thumb="https://lterweima.oss-cn-shenzhen.aliyuncs.com/ltlogo.png" arrow="{{true}}" borderRadius="{{true}}" titlePosition="middle">工单审核</am-list-item>
+</view> 
+<view>
+  <am-list-item thumb="https://lterweima.oss-cn-shenzhen.aliyuncs.com/ltlogo.png" arrow="{{true}}" borderRadius="{{true}}" titlePosition="middle">我的工单</am-list-item>
+</view> 

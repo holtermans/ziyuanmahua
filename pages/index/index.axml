@@ -1,3 +1,1 @@
-<view>
-  this is a blank page
-</view>
+<am-avatar name="{{userName}}" desc="{{jigou}}" size="sm"></am-avatar>

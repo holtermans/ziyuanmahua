@@ -1,10 +1,26 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/gongdan/gongdan",
-    "pages/index/index"
-    
+    "pages/entry/entry",
+    "pages/gongdansh/gongdansh"
   ],
   "window": {
     "defaultTitle": ""
+  },
+  "tabBar": {
+    "textColor": "#dddddd",
+    "selectedColor": "#49a9ee",
+    "backgroundColor": "#ffffff",
+    "items": [
+      {
+        "pagePath": "pages/entry/entry",
+        "name": "工单"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "name": "我的"
+      }
+    ]
   }
 }

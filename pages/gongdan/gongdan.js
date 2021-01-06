@@ -1,4 +1,4 @@
-
+var app = getApp();
 function getDatetime() {
   var now = new Date();
   var year = now.getFullYear();
@@ -33,7 +33,7 @@ Page({
     imgPath: '',
     shenpiren: "",
     date: "",
-    userName:'',
+    userName: '',
     userId: "",
     imgUrl: [],
 
@@ -94,10 +94,10 @@ Page({
         content: "请先填写完必填项",
       })
       return;
-    }else{
+    } else {
       this.setData({
-        orderName:e.detail.value.orderName,
-        orderContent:e.detail.value.orderContent
+        orderName: e.detail.value.orderName,
+        orderContent: e.detail.value.orderContent
       })
     }
     const promise = new Promise((resolve) => {
@@ -148,7 +148,7 @@ Page({
             }
           });
         });
-      }else{
+      } else {
         resolve();
       }
 
@@ -163,26 +163,27 @@ Page({
         data: {
           orderType: this.data.orderType,
           orderName: this.data.orderName,
-          orderContent:this.data.orderContent,
+          orderContent: this.data.orderContent,
           orderTime: this.data.date,
-          approver: this.data.shenpiren[0].name,
+          approver: this.data.shenpiren[0].userId,
           imgUrl: JSON.stringify(this.data.imgUrl),
-          orderStatus:0,
-          userName:'杨科林',
-          userId:'manager050',
-          createTime:getDatetime(),
+          orderStatus: 0,
+          userName: app.globalData.userName,
+          userId: app.globalData.userId,
+          createTime: getDatetime(),
         },
         dataType: 'json',
         success: function (res) {
-          
-          dd.alert({ content: 'success' });
+         
         },
         fail: function (res) {
           dd.alert({ content: 'fail' });
         },
         complete: function (res) {
           console.log(res);
-          dd.alert({ content: 'complete' });
+           dd.navigateBack({
+            delta: 1
+          })
         }
       });
     })
