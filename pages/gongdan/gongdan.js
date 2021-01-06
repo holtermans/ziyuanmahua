@@ -33,17 +33,21 @@ Page({
     imgPath: '',
     shenpiren: "",
     date: "",
+    userName:'',
     userId: "",
+    imgUrl: [],
 
   },
   onLoad() { },
   onItemClick() {
+    dd.hideLoading();
+
     var that = this;
     dd.complexChoose({
       title: "选择审核人",            //标题
       multiple: true,            //是否多选
       limitTips: "超出了限定人数",          //超过限定人数返回提示
-      maxUsers: 1000,            //最大可选人数
+      maxUsers: 1,            //最大可选人数
       pickedUsers: [],            //已选用户
       pickedDepartments: [],          //已选部门
       disabledUsers: [],            //不可选用户
@@ -58,10 +62,14 @@ Page({
         })
       },
       fail: function (err) {
-      }
+        that.setData({
+          shenpiren: [],
+        })
+      },
+
     });
   },
-  uploadImage() {
+  chooseImage() {
     dd.chooseImage({
       count: 2,
       success: (res) => {
@@ -71,6 +79,7 @@ Page({
         })
       },
     });
+
   },
   myPreviewImage() {
     dd.previewImage({
@@ -79,31 +88,104 @@ Page({
     });
   },
   onSubmit(e) {
-    console.log(`数据：${JSON.stringify(e.detail.value)}` + this.data.date + this.data.shenpiren[0].name);
-    if (this.data.imgPath != 0) {
-      dd.showLoading({
-        content: '上传图片中...',
-      });
-      this.data.imgPath.forEach(path => {
-        dd.uploadFile({
-          url: 'http://3b32dcea.nat1.s100.vip/fileUpload',
-          fileType: 'image',
-          fileName: 'file',
-          filePath: path,
-          success: (res) => {
-            console.log(res);
-            dd.hideLoading();
-            dd.alert({
-              content: '上传成功'
-            });
-          },
-          complete:function(){
-            dd.hideLoading();
-          }
-        });
-      });
+
+    if (this.isEmpty(e.detail.value.orderName) || this.isEmpty(e.detail.value.orderContent) || this.isEmpty(this.data.date) || this.isEmpty(this.data.shenpiren)) {
+      dd.alert({
+        content: "请先填写完必填项",
+      })
+      return;
+    }else{
+      this.setData({
+        orderName:e.detail.value.orderName,
+        orderContent:e.detail.value.orderContent
+      })
     }
-   
+    const promise = new Promise((resolve) => {
+      if (this.data.imgPath != 0) {
+        dd.showLoading({
+          content: '上传图片中...',
+        });
+        this.setData({
+          imgUrl: []
+        })
+        var count = 0;
+        this.data.imgPath.forEach(path => {
+          dd.uploadFile({
+            url: 'http://3b32dcea.nat1.s100.vip/fileUpload',
+            fileType: 'image',
+            fileName: 'file',
+            filePath: path,
+            success: (res) => {
+              var data = JSON.parse(res.data);
+              dd.hideLoading();
+              if (data.success) {
+                console.log(res);
+                // dd.alert({
+                //   content: '上传成功'
+                // });
+                count++;
+                this.data.imgUrl.push(data.data)
+                if (count == this.data.imgPath.length) {
+                  dd.alert({
+                    content: '上传成功'
+                  });
+                  resolve();
+                }
+              } else {
+                console.log(res);
+                // dd.alert({
+                //   content: '上传失败 '
+                // });
+                if (count == this.data.imgPath.length) {
+                  dd.alert({
+                    content: '上传失败，请重新上传'
+                  });
+                }
+              }
+            },
+            complete: function () {
+              dd.hideLoading();
+            }
+          });
+        });
+      }else{
+        resolve();
+      }
+
+    });
+
+    //图片上传完后再上传表单内容
+    promise.then(() => {
+      // Content-Type为application/x-www-form-urlencoded即默认的接口请求方式
+      dd.httpRequest({
+        url: 'http://3b32dcea.nat1.s100.vip/saveOrder',
+        method: 'POST',
+        data: {
+          orderType: this.data.orderType,
+          orderName: this.data.orderName,
+          orderContent:this.data.orderContent,
+          orderTime: this.data.date,
+          approver: this.data.shenpiren[0].name,
+          imgUrl: JSON.stringify(this.data.imgUrl),
+          orderStatus:0,
+          userName:'杨科林',
+          userId:'manager050',
+          createTime:getDatetime(),
+        },
+        dataType: 'json',
+        success: function (res) {
+          
+          dd.alert({ content: 'success' });
+        },
+        fail: function (res) {
+          dd.alert({ content: 'fail' });
+        },
+        complete: function (res) {
+          console.log(res);
+          dd.alert({ content: 'complete' });
+        }
+      });
+    })
   },
   onChooseDate() {
     var that = this;
@@ -117,8 +199,15 @@ Page({
         })
       },
       fail: function () {
-
       }
     });
+  },
+  //判断字符是否为空的方法
+  isEmpty(obj) {
+    if (typeof obj == "undefined" || obj == null || obj == "") {
+      return true;
+    } else {
+      return false;
+    }
   }
 });

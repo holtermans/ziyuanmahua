@@ -39,7 +39,7 @@
         <view>
           附件
         </view>
-        <image mode="aspectFill" src="https://lterweima.oss-cn-shenzhen.aliyuncs.com/wangwo/shoot.png" onTap="uploadImage" style="width:100rpx;height:100rpx"></image>
+        <image mode="aspectFill" src="https://lterweima.oss-cn-shenzhen.aliyuncs.com/wangwo/shoot.png" onTap="chooseImage" style="width:100rpx;height:100rpx"></image>
         <view  class="preview" a:for="{{imgPath}}">
           <image mode="aspectFill" src="{{item}}" onTap="myPreviewImage" style="width:100px;height:100px;"></image>
         </view>
