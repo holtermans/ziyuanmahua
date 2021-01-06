@@ -80,21 +80,27 @@ Page({
   },
   onSubmit(e) {
     console.log(`数据：${JSON.stringify(e.detail.value)}` + this.data.date + this.data.shenpiren[0].name);
-    dd.showLoading({
-      content: '上传图片中...',
-    });
-    dd.uploadFile({
-      url: 'http://de92568a.nat1.s100.vip/fileUpload',
-      fileType: 'image',
-      fileName: 'file',
-      filePath: this.data.imgPath[0],
-      success: (res) => {
-        dd.hideLoading();
-        dd.alert({
-          content: '上传成功'
+    if (this.data.imgPath != 0) {
+      dd.showLoading({
+        content: '上传图片中...',
+      });
+      this.data.imgPath.forEach(path => {
+        dd.uploadFile({
+          url: 'http://3b32dcea.nat1.s100.vip/fileUpload',
+          fileType: 'image',
+          fileName: 'file',
+          filePath: path,
+          success: (res) => {
+            console.log(res);
+            dd.hideLoading();
+            dd.alert({
+              content: '上传成功'
+            });
+          },
         });
-      },
-    });
+      });
+    }
+    dd.hideLoading();
   },
   onChooseDate() {
     var that = this;
