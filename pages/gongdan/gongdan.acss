@@ -33,18 +33,19 @@
   width: 70%;
   height: 70rpx;
   text-align: right;
-  
 }
 
 .form-row-textarea {
   clear: both;
 }
-.footer{
+
+.footer {
   position: fixed;
   bottom: 0px;
-  width:100%;
+  width: 100%;
 }
-.footer-row-content{
+
+.footer-row-content {
   width: 50%;
   display: inline-block;
 }
@@ -52,7 +53,6 @@
 .row {
   display: flex;
   align-items: center;
-  
   background-color: white;
 }
 
@@ -60,13 +60,11 @@
   flex: 1;
   padding-top: 28rpx;
   padding-bottom: 28rpx;
-  
   color: #000;
 }
 
 .row-extra {
   flex-basis: initial;
-  
   color: #888;
   margin-right: 12px;
 }
@@ -75,4 +73,9 @@
   width: 32rpx;
   height: 32rpx;
   margin-left: 16rpx;
+}
+
+.preview image {
+  float: left;
+  margin-left: 1%;
 }

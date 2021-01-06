@@ -97,10 +97,13 @@ Page({
               content: '上传成功'
             });
           },
+          complete:function(){
+            dd.hideLoading();
+          }
         });
       });
     }
-    dd.hideLoading();
+   
   },
   onChooseDate() {
     var that = this;
@@ -113,6 +116,9 @@ Page({
           date: res.date,
         })
       },
+      fail: function () {
+
+      }
     });
   }
 });
