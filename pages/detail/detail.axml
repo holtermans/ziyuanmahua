@@ -1,0 +1,40 @@
+<view>
+  <view>默认工单（GD20210107001）</view>
+  <am-tag size="lg" type="warning">待审核</am-tag>
+  <steps className="demo-steps-class" activeIndex="{{activeIndex}}" failIndex="{{failIndex}}" items="{{items}}">
+    <view slot="title_2" style="color: green; font-weight: bold;">titile 的内容</view>
+  </steps>
+  <view style="padding: 24rpx;">
+    <tabs tabs="{{tabs}}" tabsName="activeTab" onTabClick="handleTabClick" onChange="handleTabChange" onPlusClick="handlePlusClick" activeTab="{{activeTab}}" showPlus="{{hasPlus}}" swipeable="{{false}}" capsule="{{typeCapsule}}" hasSubTitle="{{typeHasSubTitle}}" tabBarUnderlineWidth="20px" stickyBar="{{true}}">
+      <block a:for="{{tabs}}">
+        <tab-content a:if="{{index === 0}}" key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}">
+          <view class="tab-content" style="height: 130px;padding-top:20rpx;background-color:#eee3">
+            <view style="font-size:20rpx;color:#555;line-height:30rpx">
+              <view>工单编号:</view>
+              <view>工单类型:</view>
+              <view>工单发起人:</view>
+              <view>工单发起时间:</view>
+              <view>工单计划时间:</view>
+            </view>
+          </view>
+        </tab-content>
+        <tab-content a:elif="{{index === 1}}" key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}">
+          <view class="tab-content" style="height: 200px;">图片</view>
+        </tab-content>
+        <tab-content a:else key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}">
+          <view class="tab-content">其他内容</view>
+        </tab-content>
+      </block>
+    </tabs>
+  </view>
+  <view class="footer">
+    <view class="footer-row">
+      <view class="footer-row-content">
+        <button type="warn">退回</button>
+      </view>
+      <view class="footer-row-content">
+        <button type="primary" formType="submit">通过</button>
+      </view>
+    </view>
+  </view>
+</view>

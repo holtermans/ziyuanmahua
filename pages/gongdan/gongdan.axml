@@ -1,46 +1,50 @@
 <view class="page">
   <form onSubmit="onSubmit">
     <view class="page-section">
-      <view class="form-row">
+      <!-- <view class="form-row">
         <view class="form-row-label">工单类型</view>
-        <view class="form-row-content">{{orderType}}</view>
-      </view>
+        <view class="form-row-content">{{ticketType}}
+        </view>
+      </view> -->
+      <view class="form-row">
+        <picker onChange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <view class="row">
+            <view class="row-title">工单类型</view>
+            <view class="row-extra">当前选择：{{array[index]}}</view>
+            <am-icon type="right" size="16"></am-icon>
+          </view>
+        </picker>   
+     </view>
       <view class="form-row">
         <view class="form-row-label">工单名称</view>
-        <input name="orderName" class="form-row-input" placeholder="填写工单名称" type="text" value="{{orderName}}"></input>
+        <input name="ticketName" class="form-row-input" placeholder="填写工单名称" type="text" value="{{ticketName}}"></input>
       </view>
       <view class="form-row">
         <view class="form-row-label">工单内容</view>
-        <textarea name="orderContent" class="form-row-textarea" placeholder="填写工单内容" value="{{orderContent}}"></textarea>
+        <textarea name="ticketContent" class="form-row-textarea" placeholder="填写工单内容" value="{{ticketContent}}"></textarea>
       </view>
       <view class="form-row">
         <view class="row" color="#cccc" onTap="onChooseDate">
           <view class="row-title">选择时间</view>
           <view class="row-extra">
-            <view a:if="{{date}}">
-            {{date}}
-            </view>
+            <view a:if="{{date}}">{{date}}</view>
           </view>
-          <am-icon type="right" size="16" />
+          <am-icon type="right" size="16"></am-icon>
         </view>
       </view>
       <view class="form-row">
         <view class="row" color="#cccc" onTap="onItemClick">
           <view class="row-title">审批人</view>
           <view class="row-extra">
-            <view a:for="{{shenpiren}}">
-            {{item.name}}
-            </view>
+            <view a:for="{{shenpiren}}">{{item.name}}</view>
           </view>
-          <am-icon type="right" size="16" />
+          <am-icon type="right" size="16"></am-icon>
         </view>
       </view>
       <view>
-        <view>
-          附件
-        </view>
+        <view>附件</view>
         <image mode="aspectFill" src="https://lterweima.oss-cn-shenzhen.aliyuncs.com/wangwo/shoot.png" onTap="chooseImage" style="width:100rpx;height:100rpx"></image>
-        <view  class="preview" a:for="{{imgPath}}">
+        <view a:for="{{imgPath}}" class="preview">
           <image mode="aspectFill" src="{{item}}" onTap="myPreviewImage" style="width:100px;height:100px;"></image>
         </view>
       </view>

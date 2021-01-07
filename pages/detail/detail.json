@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "am-tag": "mini-ali-ui/es/tag/index",
+    "am-steps": "mini-ali-ui/es/steps/index",
+    "steps": "mini-ali-ui/es/steps/index",
+    "button": "mini-ali-ui/es/button/index",
+    "am-tabs": "mini-ali-ui/es/tabs/index",
+    "tabs": "mini-ali-ui/es/tabs/index",
+    "tab-content": "mini-ali-ui/es/tabs/tab-content/index"
+  }
+}
