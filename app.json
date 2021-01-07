@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/gongdansh/gongdansh",
     "pages/index/index",
     "pages/gongdan/gongdan",
     "pages/entry/entry",
-    "pages/gongdansh/gongdansh",
     "pages/detail/detail"
   ],
   "window": {
