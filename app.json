@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/gongdansh/gongdansh",
     "pages/index/index",
     "pages/gongdan/gongdan",
     "pages/entry/entry",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/gongdansh/gongdansh"
   ],
   "window": {
     "defaultTitle": ""

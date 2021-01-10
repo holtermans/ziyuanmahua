@@ -3,6 +3,7 @@
     "am-collapse-item": "mini-ali-ui/es/collapse/collapse-item/index",
     "am-vtab-content": "mini-ali-ui/es/vtabs/vtab-content/index",
     "am-picker-item": "mini-ali-ui/es/picker-item/index",
-    "am-avatar": "mini-ali-ui/es/avatar/index"
+    "am-avatar": "mini-ali-ui/es/avatar/index",
+    "am-grid": "mini-ali-ui/es/grid/index"
   }
 }

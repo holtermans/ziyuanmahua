@@ -35,5 +35,7 @@ Page({
       [tabsName]: index,
     });
   },
-  onLoad() { },
+  onLoad() { 
+
+  },
 });

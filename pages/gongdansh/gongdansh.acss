@@ -1,0 +1,23 @@
+.row {
+  width: 100%;
+  padding: 2rpx;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background-color: #fff
+}
+
+.line {
+  min-height: 30px;
+  line-height: 30px;
+  border-bottom: 1px solid #ddd;
+}
+
+.row-content {
+  font-size: 25rpx;
+  color: #aaa;
+}
+
+.row-footer {
+  font-size: 25rpx;
+  color: #aaa;
+}

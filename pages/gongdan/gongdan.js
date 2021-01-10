@@ -173,7 +173,7 @@ Page({
           ticketTime: this.data.date,
           approver: this.data.shenpiren[0].userId,
           imgUrl: JSON.stringify(this.data.imgUrl),
-          ticketStatus: 0,
+          ticketStatus: 1,//1表示工单为待审核
           userName: app.globalData.userName,
           userId: app.globalData.userId,
           createTime: getDatetime(),

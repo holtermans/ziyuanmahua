@@ -18,5 +18,6 @@ App({
     authCode: '',
     userId: '',
     userName: '',
+    is_sys:false,
   }
 });

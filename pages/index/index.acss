@@ -1,0 +1,6 @@
+page {
+  background-color: rgba(250, 250, 250);
+}
+.row{
+  background-color: #fff;
+}

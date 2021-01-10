@@ -22,7 +22,7 @@ Page({
   onLoad() {
     var that = this;
     this.setData({
-      userId: '280743040626432846',
+      userId: app.globalData.userId,
     })
 
     dd.httpRequest({

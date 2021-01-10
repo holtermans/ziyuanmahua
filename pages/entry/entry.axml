@@ -1,7 +1,7 @@
 <view onTap="newOrder">
   <am-list-item thumb="https://lterweima.oss-cn-shenzhen.aliyuncs.com/ltlogo.png" arrow="{{true}}" borderRadius="{{true}}" titlePosition="middle">申请工单</am-list-item>
 </view>
-<view>
+<view onTap="BindShenHe" a:if="{{is_sys}}">
   <am-list-item thumb="https://lterweima.oss-cn-shenzhen.aliyuncs.com/ltlogo.png" arrow="{{true}}" borderRadius="{{true}}" titlePosition="middle">工单审核</am-list-item>
 </view> 
 <view>
