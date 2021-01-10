@@ -9,17 +9,19 @@
       <block a:for="{{tabs}}">
         <tab-content a:if="{{index === 0}}" key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}">
           <view class="tab-content" style="height: 130px;padding-top:20rpx;background-color:#eee3">
-            <view style="font-size:20rpx;color:#555;line-height:30rpx">
-              <view>工单编号:</view>
-              <view>工单类型:</view>
-              <view>工单发起人:</view>
-              <view>工单发起时间:</view>
-              <view>工单计划时间:</view>
+            <view class="tab-content-row" style="font-size:30rpx;color:#555;line-height:30rpx">
+              <view>工单编号:{{result.uuid}}</view>
+              <view>工单类型:{{result.ticketType}}</view>
+              <view>工单发起人:{{result.userName}}</view>
+              <view>工单发起时间:{{result.createTime}}</view>
+              <view>工单计划时间:{{result.ticketTime}}</view>
+              <view>工单具体内容:{{result.ticketContent}}</view>
             </view>
           </view>
         </tab-content>
-        <tab-content a:elif="{{index === 1}}" key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}">
-          <view class="tab-content" style="height: 200px;">图片</view>
+        <tab-content a:elif="{{index === 1}}" style="padding-bottom:100px" key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}">
+          <view class="tab-content" style="height: 30pxpx;">图片</view>
+          <image onTap="myPreviewImage" mode="aspectFill" src="{{imgUrl[0]}}"></image>
         </tab-content>
         <tab-content a:else key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}">
           <view class="tab-content">其他内容</view>

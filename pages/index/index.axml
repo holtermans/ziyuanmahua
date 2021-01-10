@@ -3,6 +3,6 @@
     <am-avatar name="{{userName}}" desc="{{jigou}}" size="sm" src="https://lterweima.oss-cn-shenzhen.aliyuncs.com/wangwo/touxiang.png"></am-avatar>
   </view>
   <view class="row" style="box-shadow: 0px 0px 10px #aaa;width:95%;margin:0 auto;postion:relative">
-    <am-grid onGridItemClick="onItemClick" columnNum="{{4}}" list="{{gridList}}" infinite="{{true}}" gridName="newGridName" circular="{{true}}" infiniteHeight="240rpx"></am-grid>
+    <am-grid onGridItemClick="onItemClick" columnNum="{{2}}" list="{{gridList}}" infinite="{{true}}" gridName="newGridName" circular="{{true}}" infiniteHeight="240rpx"></am-grid>
   </view>
 </view>

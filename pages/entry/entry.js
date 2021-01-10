@@ -17,5 +17,10 @@ Page({
     dd.navigateTo({
       url: '/pages/gongdansh/gongdansh'
     });
+  },
+  myOrder(){
+    dd.navigateTo({
+      url: '/pages/mygongdan/mygongdan'
+    });
   }
 });

@@ -1,9 +1,10 @@
 var app = getApp();
 
 var domain = 'http://3b32dcea.nat1.s100.vip/';
-
+var api = ["queryTicketByApprover", "queryTicketByUser"]
 Page({
   data: {
+    paths: ["/pages/detail/detail"],
     userId: '',
     id: '',
     uuid: '',
@@ -17,16 +18,19 @@ Page({
     userName: '',
     userId: '',
     createTime: '',
-    result:[]
+
+    result: [],
+    from: 0,
   },
-  onLoad() {
+  onLoad(query) {
     var that = this;
     this.setData({
       userId: app.globalData.userId,
+      from: query.api,
     })
-
+    console.log(query);
     dd.httpRequest({
-      url: domain + '/queryTicketByApprover',
+      url: domain + api[this.data.from],
       method: 'POST',
       data: {
         userId: this.data.userId,
@@ -37,7 +41,7 @@ Page({
           dd.showToast({
             type: 'success',
             content: '查询成功',
-            duration: 2000,
+            duration: 1000,
             success: () => {
             },
           });
@@ -54,7 +58,7 @@ Page({
           // userName: res.data.result[0].userName,
           // userId: res.data.result[0].userId,
           // createTime: res.data.result[0].createTime,
-          result:res.data.result,
+          result: res.data.result,
         })
         console.log(res);
       },
@@ -62,8 +66,13 @@ Page({
         dd.alert({ content: 'fail' });
       },
       complete: function (res) {
-        
+
       }
     });
   },
+  listTap(event) {
+    dd.navigateTo({
+      url: this.data.paths[0] + "?ticketId=" + event.target.dataset.ticketId,
+    });
+  }
 });

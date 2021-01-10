@@ -11,8 +11,11 @@ Page({
     userName: '',
     is_sys: false,
     gridList: [
-      { icon: 'https://lterweima.oss-cn-shenzhen.aliyuncs.com/wangwo/shenhe.png', text: '工单审核', },
-      { icon: 'https://lterweima.oss-cn-shenzhen.aliyuncs.com/wangwo/gongdan.png', text: '我的工单', },
+      { icon: 'https://lterweima.oss-cn-shenzhen.aliyuncs.com/wangwo/gongdan.png', text: '工单审核', },
+      { icon: 'https://lterweima.oss-cn-shenzhen.aliyuncs.com/wangwo/gongdan.png', text: '我的工单', }
+    ],
+    paths: [
+      "/pages/gongdanlist/gongdanlist"
     ]
   },
   onLoad(query) {
@@ -103,8 +106,8 @@ Page({
     })
   },
   onItemClick(ev) {
-    my.alert({
-      content: ev.detail.index,
+    dd.navigateTo({
+      url: this.data.paths[0]+"?api="+ev.detail.index
     });
   },
 });

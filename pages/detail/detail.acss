@@ -8,3 +8,6 @@
   width: 50%;
   display: inline-block;
 }
+.tab-content-row view{
+  height: 30px;
+}

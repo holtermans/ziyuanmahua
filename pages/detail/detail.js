@@ -1,5 +1,13 @@
+var app = getApp();
+
+var domain = 'http://3b32dcea.nat1.s100.vip/';
+var api = ["queryTicketByApprover", "queryTicketByUser", "queryTicketByUuid"]
+
 Page({
   data: {
+    domain: 'http://3b32dcea.nat1.s100.vip/',
+    imgUrl: [],
+    ticketId: '',
     activeIndex: 2,
     failIndex: 0,
     size: 0,
@@ -18,13 +26,13 @@ Page({
       },
 
       {
-        title: '工单附件',
+        title: '附件',
         subTitle: '描述',
       },
     ],
     activeTab: 0,
   },
-  
+
   handleTabClick({ index, tabsName }) {
     this.setData({
       [tabsName]: index,
@@ -35,7 +43,62 @@ Page({
       [tabsName]: index,
     });
   },
-  onLoad() { 
+  onLoad(query) {
+    var that = this;
+    console.log(query.ticketId);
+    this.setData({
+      ticketId: query.ticketId,
+    })
 
+    dd.httpRequest({
+      url: domain + api[2],
+      method: 'POST',
+      data: {
+        uuid: this.data.ticketId
+      },
+      dataType: 'json',
+      success: function (res) {
+        if (res.data.success === true)
+          dd.showToast({
+            type: 'success',
+            content: '查询成功',
+            duration: 1000,
+            success: () => {
+            },
+          });
+        var imgUrl = JSON.parse(res.data.result.imgUrl)
+        that.setData({
+          // id: '',
+          // uuid: res.data.result[0].uuid,
+          // ticketType: res.data.result[0].ticketType,
+          // ticketName: res.data.result[0].ticketName,
+          // ticketContent: res.data.result[0].ticketContent,
+          // ticketTime: res.data.result[0].ticketTime,
+          // approver: res.data.result[0].approver,
+          // imgUrl: res.data.result[0].imgUrl,
+          // ticketStatus: res.data.result[0].ticketStatus,
+          // userName: res.data.result[0].userName,
+          // userId: res.data.result[0].userId,
+          // createTime: res.data.result[0].createTime,
+          result: res.data.result,
+          imgUrl: imgUrl.map(x => domain + x),
+        })
+        console.log(res);
+
+        console.log(that.data.imgUrl);
+      },
+      fail: function (res) {
+        dd.alert({ content: '无法加载' });
+      },
+      complete: function (res) {
+
+      }
+    });
+  },
+  myPreviewImage() {
+    dd.previewImage({
+      current: 0,
+      urls: this.data.imgUrl,
+    });
   },
 });

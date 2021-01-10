@@ -58,7 +58,7 @@ require('../../pages/index/index?hash=cb7309308bdc79d5216b5361942acfd58fba1d32')
 require('../../pages/gongdan/gongdan?hash=1618869d18fe6fbea7737996ba7613c72dfeb4b4');
 require('../../pages/entry/entry?hash=99cf71b81d8a26404bc50d94b8f36404cc7bf6ac');
 require('../../pages/detail/detail?hash=f4fb0bd5ddbe0d96c5697a9455a23b9ebcad7f40');
-require('../../pages/gongdansh/gongdansh?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
+require('../../pages/gongdanlist/gongdanlist?hash=32d7d2807ed4e666ef03b4b3fe8c38ecf2e34e68');
 }
 self.bootstrapApp ? self.bootstrapApp({ success }) : success();
 }

@@ -4,7 +4,8 @@
     "pages/gongdan/gongdan",
     "pages/entry/entry",
     "pages/detail/detail",
-    "pages/gongdansh/gongdansh"
+    "pages/gongdanlist/gongdanlist"
+
   ],
   "window": {
     "defaultTitle": ""
@@ -16,7 +17,8 @@
     "items": [
       {
         "pagePath": "pages/entry/entry",
-        "name": "工单"
+        "name": "工单",
+        "icon": "pages/icon/jilu.png"
       },
       {
         "pagePath": "pages/index/index",
