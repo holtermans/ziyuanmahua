@@ -72,7 +72,7 @@ Page({
   },
   listTap(event) {
     dd.navigateTo({
-      url: this.data.paths[0] + "?ticketId=" + event.target.dataset.ticketId,
+      url: this.data.paths[0] + "?ticketId=" + event.target.dataset.ticketId+"&from="+this.data.from
     });
   }
 });

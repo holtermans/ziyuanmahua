@@ -13,8 +13,8 @@
             <view class="row-extra">当前选择：{{array[index]}}</view>
             <am-icon type="right" size="16"></am-icon>
           </view>
-        </picker>   
-     </view>
+        </picker>
+      </view>
       <view class="form-row">
         <view class="form-row-label">工单名称</view>
         <input name="ticketName" class="form-row-input" placeholder="填写工单名称" type="text" value="{{ticketName}}"></input>
@@ -48,6 +48,7 @@
           <image mode="aspectFill" src="{{item}}" onTap="myPreviewImage" style="width:100px;height:100px;"></image>
         </view>
       </view>
+
     </view>
     <view class="footer">
       <view class="footer-row">

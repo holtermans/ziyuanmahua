@@ -18,9 +18,9 @@ Page({
       url: '/pages/gongdansh/gongdansh'
     });
   },
-  myOrder(){
+  toTiaoQian(){
     dd.navigateTo({
-      url: '/pages/mygongdan/mygongdan'
+      url: '/pages/tiaoqian/tiaoqian'
     });
   }
 });

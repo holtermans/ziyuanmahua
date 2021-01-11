@@ -7,3 +7,7 @@
 <view onTap="myOrder">
   <am-list-item thumb="https://lterweima.oss-cn-shenzhen.aliyuncs.com/ltlogo.png" arrow="{{true}}" borderRadius="{{true}}" titlePosition="middle">我的工单</am-list-item>
 </view>  -->
+
+<view onTap="toTiaoQian">
+  <am-list-item thumb="https://lterweima.oss-cn-shenzhen.aliyuncs.com/ltlogo.png" arrow="{{true}}" borderRadius="{{true}}" titlePosition="middle">修改跳纤信息</am-list-item>
+</view>

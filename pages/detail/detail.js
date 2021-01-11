@@ -1,7 +1,7 @@
 var app = getApp();
 
 var domain = 'http://3b32dcea.nat1.s100.vip/';
-var api = ["queryTicketByApprover", "queryTicketByUser", "queryTicketByUuid"]
+var api = ["queryTicketByApprover", "queryTicketByUser", "queryTicketByUuid", "changeStatus"]
 
 Page({
   data: {
@@ -31,6 +31,9 @@ Page({
       },
     ],
     activeTab: 0,
+
+    from:0,
+    fromArray:[false,true],//true表示不显示审核按钮
   },
 
   handleTabClick({ index, tabsName }) {
@@ -48,6 +51,7 @@ Page({
     console.log(query.ticketId);
     this.setData({
       ticketId: query.ticketId,
+      from:query.from,
     })
 
     dd.httpRequest({
@@ -101,4 +105,35 @@ Page({
       urls: this.data.imgUrl,
     });
   },
+  onSubmit() {
+    dd.httpRequest({
+      url: domain + api[3],
+      method: 'POST',
+      data: {
+        uuid: this.data.ticketId,
+        ticketStatus: 2.
+      },
+      dataType: 'json',
+      success: function (res) {
+        if (res.data.success === true)
+          dd.showToast({
+            type: 'success',
+            content: '已通过',
+            duration: 1000,
+            success: () => {
+            },
+          });
+        console.log(res);
+        dd.navigateBack({
+          delta: 2,
+        })
+      },
+      fail: function (res) {
+        dd.alert({ content: '无法加载' });
+      },
+      complete: function (res) {
+
+      }
+    });
+  }
 });

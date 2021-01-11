@@ -1,27 +1,33 @@
 <view>
   <view>默认工单（GD20210107001）</view>
-  <am-tag size="lg" type="warning">待审核</am-tag>
-  <steps className="demo-steps-class" activeIndex="{{activeIndex}}" failIndex="{{failIndex}}" items="{{items}}">
+  <am-tag size="lg" type="warning" a:if="{{result.ticketStatus==1}}">待审核</am-tag>
+  <am-tag size="lg" type="success" a:if="{{result.ticketStatus==2}}">已通过</am-tag>
+  <steps className="demo-steps-class" activeIndex="{{result.ticketStatus+1}}" failIndex="{{failIndex}}" items="{{items}}">
     <view slot="title_2" style="color: green; font-weight: bold;">titile 的内容</view>
   </steps>
   <view style="padding: 24rpx;">
     <tabs tabs="{{tabs}}" tabsName="activeTab" onTabClick="handleTabClick" onChange="handleTabChange" onPlusClick="handlePlusClick" activeTab="{{activeTab}}" showPlus="{{hasPlus}}" swipeable="{{false}}" capsule="{{typeCapsule}}" hasSubTitle="{{typeHasSubTitle}}" tabBarUnderlineWidth="20px" stickyBar="{{true}}">
       <block a:for="{{tabs}}">
         <tab-content a:if="{{index === 0}}" key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}">
-          <view class="tab-content" style="height: 130px;padding-top:20rpx;background-color:#eee3">
+          <view class="tab-content" style="height: auto;padding-top:20rpx;background-color:#eee3">
             <view class="tab-content-row" style="font-size:30rpx;color:#555;line-height:30rpx">
               <view>工单编号:{{result.uuid}}</view>
-              <view>工单类型:{{result.ticketType}}</view>
-              <view>工单发起人:{{result.userName}}</view>
-              <view>工单发起时间:{{result.createTime}}</view>
-              <view>工单计划时间:{{result.ticketTime}}</view>
-              <view>工单具体内容:{{result.ticketContent}}</view>
+              <view>类型:{{result.ticketType}}</view>
+              <view>发起人:{{result.userName}}</view>
+              <view>
+                审批人:{{result.approver}}
+              </view>
+              <view>发起时间:{{result.createTime}}</view>
+              <view>计划时间:{{result.ticketTime}}</view>
+              <view>具体内容:{{result.ticketContent}}</view>
             </view>
           </view>
         </tab-content>
         <tab-content a:elif="{{index === 1}}" style="padding-bottom:100px" key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}">
           <view class="tab-content" style="height: 30pxpx;">图片</view>
-          <image onTap="myPreviewImage" mode="aspectFill" src="{{imgUrl[0]}}"></image>
+          <view a:for="{{imgUrl}}">
+            <image onTap="myPreviewImage" mode="aspectFill" src="{{item}}"></image>
+          </view>
         </tab-content>
         <tab-content a:else key="{{index}}" tabId="{{index}}" activeTab="{{activeTab}}">
           <view class="tab-content">其他内容</view>
@@ -29,13 +35,13 @@
       </block>
     </tabs>
   </view>
-  <view class="footer">
+  <view class="footer" hidden="{{fromArray[from]}}">
     <view class="footer-row">
       <view class="footer-row-content">
         <button type="warn">退回</button>
       </view>
       <view class="footer-row-content">
-        <button type="primary" formType="submit">通过</button>
+        <button onTap="onSubmit" type="primary" formType="submit">通过</button>
       </view>
     </view>
   </view>

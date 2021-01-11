@@ -1,0 +1,24 @@
+<view class="page">
+  <form onSubmit="onSubmit">
+    <view class="page-section">
+      <!-- <view class="form-row"><view class="form-row-label">工单类型</view><view class="form-row-content">{{ticketType}}</view></view> -->
+      <view class="form-row"></view>
+      <view>
+        <view>跳纤信息表</view>
+        <button type="primary" onTap="uploadFile">
+        上传表格
+        </button>
+      </view>
+    </view>
+    <view class="footer">
+      <view class="footer-row">
+        <view class="footer-row-content">
+          <button type="default"></button>
+        </view>
+        <view class="footer-row-content">
+          <button type="primary" formType="submit">修改</button>
+        </view>
+      </view>
+    </view>
+  </form>
+</view>

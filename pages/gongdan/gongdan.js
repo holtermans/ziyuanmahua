@@ -15,7 +15,7 @@ function getDatetime() {
     clock += "0";
   clock += day + " ";
   if (hh < 10)
-     clock += "0";
+    clock += "0";
   clock += hh + ":";
   if (mm < 10) clock += '0';
   clock += mm + ":";
@@ -27,7 +27,7 @@ function getDatetime() {
 Page({
   data: {
     array: ['拆纤工单', '故障工单', '其他工单'],
-    ticketType:"",
+    ticketType: '',
     ticketName: "",
     ticketContent: "",
     imgPath: '',
@@ -167,7 +167,7 @@ Page({
         url: 'http://3b32dcea.nat1.s100.vip/saveTicket',
         method: 'POST',
         data: {
-          ticketType: this.data.ticketType,
+          ticketType: this.data.ticketType || this.data.array[0],
           ticketName: this.data.ticketName,
           ticketContent: this.data.ticketContent,
           ticketTime: this.data.date,
@@ -200,7 +200,7 @@ Page({
     console.log('picker发送选择改变，携带值为', e.detail.value);
     this.setData({
       index: e.detail.value,
-      ticketType:this.data.array[e.detail.value],
+      ticketType: this.data.array[e.detail.value],
     });
   },
   onChooseDate() {

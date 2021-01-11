@@ -4,8 +4,8 @@
     "pages/gongdan/gongdan",
     "pages/entry/entry",
     "pages/detail/detail",
-    "pages/gongdanlist/gongdanlist"
-
+    "pages/gongdanlist/gongdanlist",
+    "pages/tiaoqian/tiaoqian"
   ],
   "window": {
     "defaultTitle": ""
@@ -18,11 +18,13 @@
       {
         "pagePath": "pages/entry/entry",
         "name": "工单",
-        "icon": "pages/icon/jilu.png"
+        "icon": "./icon/jilu.png"
       },
       {
         "pagePath": "pages/index/index",
-        "name": "我的"
+        "name": "我的",
+         "icon":"./icon/shenqing.png"
+
       }
     ]
   }

@@ -5,14 +5,12 @@
 <view style="background-color:#eee;padding-top: 20px;">
   <view style="font-size:25px;text-align:center;line-height:25px;">工单列表</view>
   <view a:for="{{result}}" class="row" onTap="listTap" data-ticketId="{{item.uuid}}">
-    <view class=" line row-title">【{{item.userName}}】工单待审批</view>
+    <view a:if="{{item.ticketStatus==1}}" class=" line row-title" style="color:red;">【{{item.userName}}】工单待审批</view>
+    <view a:if="{{item.ticketStatus==2}}" class=" line row-title" style="color:green;">【{{item.userName}}】工单已通过</view>
     <view class=" line row-content">
       <view a:if="{{item.ticketType}}">工单类型：{{item.ticketType}}</view>
       <view a:if="{{item.uuid}}">工单编号：{{item.uuid}}</view>
       <view a:if="{{item.ticketName}}">工单名称：{{item.ticketName}}</view>
-      <view>
-        {{item.imgUrl}}
-      </view>
     </view>
     <view class=" line row-footer">{{item.createTime}}</view>
   </view>
